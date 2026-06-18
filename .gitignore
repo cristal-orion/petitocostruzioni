@@ -1,0 +1,19 @@
+# build output
+dist/
+# dependencies
+node_modules/
+# lockfile (il Dockerfile fa npm install fresco per i binari nativi Linux)
+package-lock.json
+# generated types
+.astro/
+# environment
+.env
+.env.production
+# logs
+npm-debug.log*
+# macOS / editors
+.DS_Store
+.vscode/
+# materiali di lavoro (non parte del sito da deployare)
+MATERIALE_BASE_PETITO_COSTRUZIONI/
+materiali/

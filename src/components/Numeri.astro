@@ -1,0 +1,64 @@
+---
+// Numeri reali (dal brief). Niente metriche inventate.
+const stats = [
+  { val: 1970, suffix: "", label: "Attività familiare avviata", note: "Esperienza tramandata da tre generazioni di costruttori." },
+  { val: 2013, suffix: "", label: "Costituzione della S.r.l.", note: "Struttura formalizzata e oggi pienamente operativa." },
+  { val: 3, suffix: "", label: "Regioni servite", note: "Campania, Lazio e Abruzzo — cantieri seguiti da vicino." },
+  { val: 110, suffix: "", label: "Maestranze coordinate", note: "10 operai diretti in regola + ~100 specializzati a contratto." },
+];
+---
+
+<section class="section numeri" id="numeri">
+  <div class="container numeri__layout">
+    <div class="numeri__aside">
+      <p class="label" data-reveal>I numeri</p>
+      <h2 class="numeri__claim" data-reveal>
+        Una storia<br /><span class="gold">verificabile.</span>
+      </h2>
+      <p class="numeri__sub" data-reveal>
+        Dall'impresa di famiglia degli anni Settanta alla società strutturata
+        di oggi: una continuità che diventa garanzia per chi ci sceglie.
+      </p>
+    </div>
+
+    <ol class="numeri__list">
+      {stats.map((s) => (
+        <li class="stat" data-reveal>
+          <span class="stat__num" data-counter={s.val} data-suffix={s.suffix}>0</span>
+          <span class="stat__label">{s.label}</span>
+          <span class="stat__note">{s.note}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .numeri { background: var(--color-bg-2); }
+  .numeri__layout { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: var(--space-3xl); align-items: start; }
+  .numeri__aside { position: sticky; top: 18vh; }
+  .numeri__claim {
+    font-family: var(--font-display); text-transform: uppercase;
+    font-size: var(--text-display-s); line-height: 0.98; letter-spacing: -0.01em;
+    margin-block: var(--space-md) var(--space-lg);
+  }
+  .numeri__sub { color: var(--color-fg-dim); font-size: var(--text-base); max-width: 38ch; }
+
+  .numeri__list { display: flex; flex-direction: column; }
+  .stat { padding-block: var(--space-2xl); border-bottom: 1px solid var(--color-line); display: grid; gap: var(--space-xs); }
+  .stat:first-child { padding-top: 0; }
+  .stat:last-child { border-bottom: 0; }
+  .stat__num {
+    font-family: var(--font-display); font-size: clamp(3.5rem, 2rem + 7vw, 7rem);
+    line-height: 0.9; color: var(--color-fg); letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat__label { font-weight: 700; font-size: var(--text-xl); color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.02em; font-family: var(--font-body); }
+  .stat__note { color: var(--color-fg-dim); font-size: var(--text-sm); max-width: 44ch; }
+
+  @media (max-width: 820px) {
+    .numeri__layout { grid-template-columns: 1fr; gap: var(--space-2xl); }
+    .numeri__aside { position: static; }
+    .stat { padding-block: var(--space-xl); }
+  }
+</style>

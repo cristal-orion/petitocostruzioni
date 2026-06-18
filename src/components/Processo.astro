@@ -1,0 +1,82 @@
+---
+const steps = [
+  { n: "01", t: "Sopralluogo", d: "Geometra e architetto valutano lo stato dei luoghi, ascoltano l'obiettivo e fotografano i vincoli reali. Senza promesse a vuoto." },
+  { n: "02", t: "Progetto & preventivo", d: "Capitolato dettagliato, materiali definiti, costi e tempi messi nero su bianco. Quello che firmi è quello che paghi." },
+  { n: "03", t: "Cantiere", d: "Squadra in regola, direzione costante, un referente sempre raggiungibile. Aggiornamenti puntuali, nessuna comunicazione assente." },
+  { n: "04", t: "Consegna & garanzia", d: "Verifica finale insieme al committente, documentazione in ordine e assistenza dopo la consegna. Il rapporto non finisce con le chiavi." },
+];
+---
+
+<section class="section processo" id="processo">
+  <div class="container">
+    <div class="head processo__head">
+      <p class="label" data-reveal>Come lavoriamo</p>
+      <h2 class="head__title" data-reveal>Un metodo, dal primo sopralluogo alle chiavi.</h2>
+    </div>
+
+    <ol class="processo__grid">
+      {steps.map((s, i) => (
+        <li class="step" data-reveal style={`--i:${i}`}>
+          <div class="step__top">
+            <span class="step__n display">{s.n}</span>
+            <span class="step__dot" aria-hidden="true"></span>
+          </div>
+          <h3 class="step__t">{s.t}</h3>
+          <p class="step__d">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="processo__cta" data-reveal>
+      <p>Pronto a partire con chi non lascia nulla al caso?</p>
+      <a href="#contatti" class="btn">Parliamone <span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .processo { background: var(--color-bg); }
+  .processo__head { margin-bottom: var(--space-2xl); }
+
+  .processo__grid {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg); position: relative;
+  }
+  .step {
+    display: flex; flex-direction: column; gap: var(--space-sm);
+    padding: var(--space-lg); padding-top: var(--space-xl);
+    background: var(--color-bg-2); border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
+  }
+  .step:hover { border-color: var(--color-accent); transform: translateY(-4px); }
+
+  .step__top { display: flex; align-items: center; justify-content: space-between; }
+  .step__n { font-size: clamp(2.5rem, 1.5rem + 3vw, 4rem); color: var(--color-accent); line-height: 0.8; }
+  /* progress dot + connector line across the row */
+  .step__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); position: relative; flex: none; }
+  .step:not(:last-child) .step__dot::after {
+    content: ""; position: absolute; inset-block-start: 50%; inset-inline-start: 100%;
+    width: calc(var(--space-lg) + 2px); height: 1px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-line));
+    transform: translateY(-50%);
+  }
+  .step__t { font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xl); letter-spacing: 0.01em; line-height: 1.05; margin-top: var(--space-xs); }
+  .step__d { color: var(--color-fg-dim); font-size: var(--text-sm); line-height: 1.55; }
+
+  .processo__cta {
+    margin-top: var(--space-2xl); padding: var(--space-xl);
+    border: 1px dashed var(--color-line-strong); border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); flex-wrap: wrap;
+  }
+  .processo__cta p { font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-2xl); letter-spacing: 0.01em; line-height: 1.1; max-width: 22ch; }
+
+  @media (max-width: 900px) {
+    .processo__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* nascondi i connettori orizzontali quando va a capo */
+    .step__dot::after { display: none; }
+  }
+  @media (max-width: 520px) {
+    .processo__grid { grid-template-columns: 1fr; }
+  }
+</style>

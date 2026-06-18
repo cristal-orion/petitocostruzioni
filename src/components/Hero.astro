@@ -1,0 +1,113 @@
+---
+// Marquee Hero — full-bleed, layered, parallax background placeholder
+---
+
+<section class="hero" id="top">
+  <div class="hero__bg" data-parallax>
+    <div
+      class="ph hero__ph"
+      data-ph="IMG · HERO — cantiere/interno di lusso, luce dorata cinematografica"
+    >
+      <img src="/img/hero.jpg" alt="Interno ristrutturato di pregio firmato Petito Costruzioni" onerror="this.remove()" />
+    </div>
+    <div class="hero__scrim"></div>
+  </div>
+
+  <div class="container hero__content">
+    <p class="label hero__eyebrow" data-reveal>
+      Impresa edile · dal 1970 · Campania — Lazio — Abruzzo
+    </p>
+
+    <h1 class="display hero__title">
+      <span class="hero__line" data-reveal-line>Costruiamo</span>
+      <span class="hero__line hero__line--gold" data-reveal-line>certezze.</span>
+    </h1>
+
+    <p class="lede hero__lede" data-reveal>
+      Ristrutturazioni e opere di alto livello per chi non può permettersi
+      improvvisazione. Tempistiche rispettate, maestranze in regola, una
+      struttura collaudata su commesse della Difesa.
+    </p>
+
+    <div class="hero__actions" data-reveal>
+      <a href="#contatti" class="btn">
+        Richiedi un sopralluogo
+        <span class="btn__arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#portfolio" class="btn btn--ghost">Guarda i lavori</a>
+    </div>
+
+    <dl class="hero__proof" data-reveal>
+      <div>
+        <dt class="label">Esperienza</dt>
+        <dd>Attività familiare dagli anni '70</dd>
+      </div>
+      <div>
+        <dt class="label">Committenti</dt>
+        <dd>NATO · Genio Militare · Marina · Min. Difesa</dd>
+      </div>
+      <div>
+        <dt class="label">Garanzia</dt>
+        <dd>Manodopera regolare e controllata</dd>
+      </div>
+    </dl>
+  </div>
+
+  <a href="#servizi" class="hero__cue" aria-label="Scorri per scoprire">
+    <span class="label">Scorri</span>
+    <span class="hero__cue-line"></span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative; min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding-block: calc(var(--space-4xl) + 2rem) var(--space-2xl);
+    overflow: clip;
+  }
+  .hero__bg { position: absolute; inset: -8% 0; z-index: 0; }
+  .hero__ph { position: absolute; inset: 0; border: 0; border-radius: 0; width: 100%; height: 100%; }
+  .hero__scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, oklch(13% 0.004 60 / 0.72) 0%, oklch(13% 0.004 60 / 0.35) 38%, oklch(13% 0.004 60 / 0.92) 100%),
+      linear-gradient(90deg, oklch(13% 0.004 60 / 0.6), transparent 60%);
+  }
+  .hero__content { position: relative; z-index: 1; }
+  .hero__eyebrow { margin-bottom: var(--space-lg); }
+  .hero__title { font-size: var(--text-mega); display: flex; flex-direction: column; }
+  .hero__line { display: block; }
+  .hero__line--gold {
+    color: var(--color-accent);
+    -webkit-text-stroke: 0;
+  }
+  .hero__lede { margin-block: var(--space-lg) var(--space-xl); max-width: 40ch; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-3xl); }
+
+  .hero__proof {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg); padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-line); max-width: 60rem;
+  }
+  .hero__proof dt { margin-bottom: 0.35rem; }
+  .hero__proof dd { font-size: var(--text-sm); color: var(--color-fg-dim); line-height: 1.4; }
+
+  .hero__cue {
+    position: absolute; inset-block-end: var(--space-lg); inset-inline-end: var(--gutter);
+    display: flex; flex-direction: column; align-items: center; gap: var(--space-sm);
+    z-index: 1;
+  }
+  .hero__cue-line {
+    width: 1px; height: 48px; background: var(--color-accent);
+    transform-origin: top; animation: cue 2.2s var(--ease-in-out) infinite;
+  }
+  @keyframes cue { 0%,100% { transform: scaleY(0.35); opacity: 0.4; } 50% { transform: scaleY(1); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .hero__cue-line { animation: none; } }
+
+  @media (max-width: 720px) {
+    .hero__proof { grid-template-columns: 1fr; gap: var(--space-md); }
+    .hero__cue { display: none; }
+    .hero__lede { max-width: none; }
+  }
+</style>

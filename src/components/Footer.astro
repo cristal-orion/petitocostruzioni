@@ -1,0 +1,58 @@
+---
+const anno = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__statement-wrap">
+      <img src="/brand/logo-oro.png" alt="" width="64" height="64" class="footer__mark" />
+      <p class="footer__statement display" data-reveal>
+        Nel settore edile,<br />la fiducia vale <span class="gold">più del prezzo.</span>
+      </p>
+    </div>
+
+    <div class="footer__bar">
+      <div class="footer__brand">
+        <span class="footer__name">Petito Costruzioni S.r.l.</span>
+        <span class="footer__where">Cesa (CE) · Campania — Lazio — Abruzzo</span>
+      </div>
+      <nav class="footer__nav" aria-label="Navigazione footer">
+        <a href="#servizi">Servizi</a>
+        <a href="#perche">Perché Petito</a>
+        <a href="#portfolio">Lavori</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <a href="#contatti" class="btn btn--ghost footer__cta">Richiedi sopralluogo</a>
+    </div>
+
+    <hr class="rule" />
+
+    <div class="footer__legal">
+      <span>© {anno} Petito Costruzioni S.r.l. — P. IVA 07390231210</span>
+      <span>Cod. univoco KRRH6B9 · PEC petito.costruzioni@pec.it</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--color-bg); padding-block: var(--space-3xl) var(--space-xl); border-top: 1px solid var(--color-line); }
+  .footer__statement-wrap { display: flex; flex-direction: column; gap: var(--space-lg); margin-bottom: var(--space-3xl); }
+  .footer__mark { opacity: 0.9; }
+  .footer__statement {
+    font-family: var(--font-display); text-transform: uppercase;
+    font-size: var(--text-display); line-height: 0.95; letter-spacing: -0.01em; max-width: 16ch;
+  }
+  .footer__bar { display: flex; align-items: center; gap: var(--space-xl); flex-wrap: wrap; margin-bottom: var(--space-xl); }
+  .footer__brand { display: flex; flex-direction: column; margin-inline-end: auto; }
+  .footer__name { font-weight: 700; font-size: var(--text-lg); }
+  .footer__where { font-size: var(--text-sm); color: var(--color-fg-dim); }
+  .footer__nav { display: flex; gap: var(--space-lg); flex-wrap: wrap; }
+  .footer__nav a { font-size: var(--text-sm); color: var(--color-fg-dim); transition: color var(--dur-fast) var(--ease-out); white-space: nowrap; }
+  .footer__nav a:hover { color: var(--color-accent); }
+  .footer__legal { display: flex; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-lg); font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.05em; color: var(--color-fg-faint); }
+
+  @media (max-width: 720px) {
+    .footer__bar { flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
+    .footer__cta { width: 100%; justify-content: center; }
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+const pilastri = [
+  {
+    k: "Tranquillità",
+    titolo: "Tempi e modalità su cui contare",
+    testo:
+      "Manodopera in regola e un'azienda abituata ai controlli continui richiesti dalle gare della Difesa. Quando affidi un lavoro a Petito, sai già come finirà.",
+  },
+  {
+    k: "Responsabilità",
+    titolo: "Non solo estetica: sicurezza",
+    testo:
+      "Infiltrazioni, distacchi, facciate degradate, danni strutturali sottovalutati. Rimandare certi interventi costa molto più del lavoro stesso.",
+  },
+  {
+    k: "Competenza",
+    titolo: "Per i lavori che non perdonano",
+    testo:
+      "Edifici storici, consolidamenti, impiantistica complessa, cantieri in contesti abitati. Alcuni interventi richiedono più di una semplice impresa edile.",
+  },
+];
+---
+
+<section class="section section--light perche" id="perche">
+  <div class="container">
+    <div class="perche__top">
+      <p class="label" data-reveal>Perché Petito</p>
+      <h2 class="perche__statement display" data-reveal>
+        Il problema non è iniziare i lavori.<br />
+        È scegliere <span class="gold">a chi affidarli.</span>
+      </h2>
+    </div>
+
+    <div class="perche__grid">
+      {pilastri.map((p, i) => (
+        <article class="pilastro" data-reveal>
+          <span class="pilastro__idx label">0{i + 1}</span>
+          <h3 class="pilastro__k">{p.k}</h3>
+          <p class="pilastro__t">{p.titolo}</p>
+          <p class="pilastro__d">{p.testo}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .perche__top { max-width: none; margin-bottom: var(--space-3xl); }
+  .perche__statement {
+    font-family: var(--font-display); text-transform: uppercase;
+    font-size: clamp(2rem, 1.1rem + 3.4vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em;
+    margin-top: var(--space-md); max-width: none; text-wrap: balance;
+  }
+  .perche__grid {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl); border-top: 1px solid var(--color-line-light); padding-top: var(--space-xl);
+  }
+  .pilastro { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .pilastro__idx { color: var(--color-accent-deep); }
+  .pilastro__k {
+    font-family: var(--font-display); text-transform: uppercase;
+    font-size: var(--text-2xl); letter-spacing: 0.01em; line-height: 1;
+  }
+  .pilastro__t { font-weight: 700; font-size: var(--text-lg); color: var(--color-ink); }
+  .pilastro__d { color: oklch(34% 0.012 70); font-size: var(--text-sm); line-height: 1.6; }
+
+  @media (max-width: 820px) { .perche__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } }
+</style>

@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Referenze from "../components/Referenze.astro";
+import Servizi from "../components/Servizi.astro";
+import PerchePetito from "../components/PerchePetito.astro";
+import Numeri from "../components/Numeri.astro";
+import Processo from "../components/Processo.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Contatti from "../components/Contatti.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base>
+  <Nav />
+  <main>
+    <Hero />
+    <Referenze />
+    <Servizi />
+    <PerchePetito />
+    <Numeri />
+    <Processo />
+    <Portfolio />
+    <Contatti />
+  </main>
+  <Footer />
+</Base>
+
+<script>
+  import "../scripts/animations.js";
+</script>

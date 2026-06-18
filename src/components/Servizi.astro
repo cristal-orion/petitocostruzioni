@@ -1,0 +1,107 @@
+---
+const servizi = [
+  {
+    n: "01",
+    titolo: "Ristrutturazioni di pregio",
+    testo:
+      "Appartamenti, attici e ville per una committenza esigente. Finiture su misura, materiali selezionati, dettaglio sartoriale.",
+    tags: ["Interior", "Finiture", "Capitolato luxury"],
+    ph: "IMG · interno residenziale di lusso ristrutturato",
+    img: "/img/servizio-residenziale.jpg",
+  },
+  {
+    n: "02",
+    titolo: "Studi medici e dentistici",
+    testo:
+      "Ambienti sanitari a norma, impiantistica dedicata e cantieri gestiti senza fermare l'attività. Precisione tecnica dove conta.",
+    tags: ["Normative", "Impianti", "Cantiere attivo"],
+    ph: "IMG · studio dentistico/medico moderno ed elegante",
+    img: "/img/servizio-sanitario.jpg",
+  },
+  {
+    n: "03",
+    titolo: "Spazi business",
+    testo:
+      "Uffici, showroom e attività commerciali che devono comunicare solidità. Consegne pianificate, zero sorprese.",
+    tags: ["Uffici", "Retail", "Showroom"],
+    ph: "IMG · ufficio direzionale / showroom di rappresentanza",
+    img: "/img/servizio-business.jpg",
+  },
+  {
+    n: "04",
+    titolo: "Restauro & consolidamento",
+    testo:
+      "Edifici storici, facciate, interventi strutturali delicati. Quando il lavoro è complesso, l'improvvisazione non basta.",
+    tags: ["Strutture", "Facciate", "Restauro"],
+    ph: "IMG · facciata storica in restauro / ponteggio di pregio",
+    img: "/img/servizio-restauro.jpg",
+  },
+];
+---
+
+<section class="section servizi" id="servizi">
+  <div class="container">
+    <div class="head servizi__head">
+      <p class="label" data-reveal>Cosa facciamo</p>
+      <h2 class="head__title" data-reveal>
+        Un'unica impresa,<br />per lavori che non ammettono errori.
+      </h2>
+    </div>
+
+    <ul class="servizi__grid">
+      {servizi.map((s) => (
+        <li class="card" data-reveal data-tilt>
+          <div class="ph card__img" data-ph={s.ph}>
+            <img src={s.img} alt={s.titolo} loading="lazy" onerror="this.remove()" />
+          </div>
+          <div class="card__body">
+            <span class="card__n label">{s.n}</span>
+            <h3 class="card__title">{s.titolo}</h3>
+            <p class="card__text">{s.testo}</p>
+            <ul class="card__tags">
+              {s.tags.map((t) => <li>{t}</li>)}
+            </ul>
+          </div>
+          <span class="card__arrow" aria-hidden="true">→</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .servizi__head { margin-bottom: var(--space-2xl); }
+  .servizi__grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+  .card {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--color-bg-2); border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg); overflow: hidden;
+    transition: border-color var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
+    will-change: transform;
+  }
+  .card:hover { border-color: var(--color-accent); transform: translateY(-4px); }
+  .card__img { aspect-ratio: 16 / 10; width: 100%; border: 0; border-radius: 0; }
+  .card__body { padding: var(--space-lg) var(--space-lg) var(--space-xl); display: flex; flex-direction: column; gap: var(--space-sm); }
+  .card__n { color: var(--color-fg-faint); }
+  .card__title { font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-2xl); letter-spacing: 0.01em; line-height: 1.05; }
+  .card__text { color: var(--color-fg-dim); font-size: var(--text-sm); max-width: 42ch; }
+  .card__tags { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-xs); }
+  .card__tags li {
+    font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--color-fg-dim);
+    padding: 0.3rem 0.6rem; border: 1px solid var(--color-line); border-radius: var(--radius-pill);
+  }
+  .card__arrow {
+    position: absolute; inset-block-start: var(--space-lg); inset-inline-end: var(--space-lg);
+    color: var(--color-accent); font-size: 1.4rem; opacity: 0;
+    transform: translate(-6px, 6px); transition: opacity var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
+  }
+  .card:hover .card__arrow { opacity: 1; transform: translate(0, 0); }
+
+  @media (max-width: 720px) {
+    .servizi__grid { grid-template-columns: 1fr; }
+  }
+</style>

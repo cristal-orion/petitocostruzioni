@@ -1,0 +1,45 @@
+---
+// Striscia referenze istituzionali — testo (niente loghi inventati)
+const referenze = [
+  "NATO — Allied Joint Force Command Naples",
+  "Direzione del Genio Militare per la Marina",
+  "Ministero della Difesa — Ispettorato Infrastrutture",
+  "Marina Militare",
+  "Opere civili e industriali",
+  "Acquedotti · Fognature · Impianti di depurazione",
+];
+---
+
+<section class="ref" aria-label="Referenze istituzionali">
+  <div class="container ref__intro">
+    <p class="label" data-reveal>Dove l'errore non è contemplato</p>
+    <p class="ref__claim" data-reveal>
+      Petito lavora da anni con committenti che impongono i controlli più
+      severi del Paese. <span class="gold">Se ci affidano le loro opere, è perché possono fidarsi.</span>
+    </p>
+  </div>
+
+  <div class="ref__marquee" data-marquee aria-hidden="true">
+    <div class="ref__track">
+      {[...referenze, ...referenze].map((r) => (
+        <span class="ref__item"><span class="ref__dot"></span>{r}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ref { padding-block: var(--space-3xl) var(--space-2xl); border-block: 1px solid var(--color-line); overflow: clip; }
+  .ref__intro { display: flex; flex-direction: column; gap: var(--space-md); margin-bottom: var(--space-2xl); }
+  .ref__claim { font-size: var(--text-2xl); max-width: 40ch; line-height: 1.3; font-weight: 500; }
+
+  .ref__marquee { width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .ref__track { display: flex; gap: var(--space-2xl); width: max-content; will-change: transform; }
+  .ref__item {
+    display: inline-flex; align-items: center; gap: var(--space-md);
+    font-family: var(--font-display); text-transform: uppercase;
+    font-size: clamp(1.1rem, 0.8rem + 1.4vw, 1.9rem); letter-spacing: 0.02em;
+    color: var(--color-fg-dim); white-space: nowrap; padding-block: var(--space-sm);
+  }
+  .ref__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); flex: none; }
+</style>
