@@ -1,19 +1,29 @@
 ---
+// Icone (stroke, currentColor) per le 3 fasi
+const icons = {
+  clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
+  shield: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-2.9 7.6-7 9-4.1-1.4-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  compass: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.6 8.4l-2.1 5.1-5.1 2.1 2.1-5.1 5.1-2.1z"/></svg>`,
+};
+
 const pilastri = [
   {
     k: "Tranquillità",
+    icon: "clock",
     titolo: "Tempi e modalità su cui contare",
     testo:
-      "Manodopera in regola e un'azienda abituata ai controlli continui richiesti dalle gare della Difesa. Quando affidi un lavoro a Petito, sai già come finirà.",
+      "Manodopera in regola e un'azienda abituata ai controlli continui delle commesse pubbliche più esigenti. Quando affidi un lavoro a Petito, sai già come finirà.",
   },
   {
     k: "Responsabilità",
+    icon: "shield",
     titolo: "Non solo estetica: sicurezza",
     testo:
       "Infiltrazioni, distacchi, facciate degradate, danni strutturali sottovalutati. Rimandare certi interventi costa molto più del lavoro stesso.",
   },
   {
     k: "Competenza",
+    icon: "compass",
     titolo: "Per i lavori che non perdonano",
     testo:
       "Edifici storici, consolidamenti, impiantistica complessa, cantieri in contesti abitati. Alcuni interventi richiedono più di una semplice impresa edile.",
@@ -31,10 +41,17 @@ const pilastri = [
       </h2>
     </div>
 
+    {/* TODO: quando il titolare invia la foto reale del team/titolare,
+        inserire qui sopra la griglia un blocco "chi c'è dietro i lavori"
+        (foto + breve testo). Predisposizione lasciata volutamente vuota. */}
+
     <div class="perche__grid">
       {pilastri.map((p, i) => (
         <article class="pilastro" data-reveal>
-          <span class="pilastro__idx label">0{i + 1}</span>
+          <div class="pilastro__head">
+            <span class="pilastro__icon" aria-hidden="true" set:html={icons[p.icon]}></span>
+            <span class="pilastro__idx label">0{i + 1}</span>
+          </div>
           <h3 class="pilastro__k">{p.k}</h3>
           <p class="pilastro__t">{p.titolo}</p>
           <p class="pilastro__d">{p.testo}</p>
@@ -56,6 +73,9 @@ const pilastri = [
     gap: var(--space-xl); border-top: 1px solid var(--color-line-light); padding-top: var(--space-xl);
   }
   .pilastro { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .pilastro__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xs); }
+  .pilastro__icon { display: inline-flex; color: var(--color-accent-deep); }
+  .pilastro__icon :global(svg) { width: 30px; height: 30px; display: block; }
   .pilastro__idx { color: var(--color-accent-deep); }
   .pilastro__k {
     font-family: var(--font-display); text-transform: uppercase;
