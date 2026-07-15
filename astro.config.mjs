@@ -2,6 +2,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.petitocostruzioni.it',
+  site: 'https://costruzionipetito.it',
   server: { port: 4321, host: true },
 });
