@@ -7,12 +7,12 @@ interface Props {
 }
 
 const {
-  title = "Petito Costruzioni — Impresa edile di precisione | Campania · Lazio · Abruzzo",
-  description = "Ristrutturazioni e costruzioni di alto livello per privati e aziende. Tempistiche certe, manodopera in regola, esperienza con committenti esigenti: NATO, Marina, Ministeri e clientela privata di pregio.",
+  title = "Petito Costruzioni — Impresa edile di precisione",
+  description = "Ristrutturazioni e costruzioni di alto livello per privati e aziende in Campania, Lazio e Abruzzo. Dal 1970.",
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const socialImageUrl = new URL("/social-card.png", Astro.site);
+const socialImageUrl = new URL("/social-card.jpg", Astro.site);
 ---
 
 <!doctype html>
@@ -27,14 +27,15 @@ const socialImageUrl = new URL("/social-card.png", Astro.site);
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Petito Costruzioni" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:image" content={socialImageUrl} />
     <meta property="og:image:secure_url" content={socialImageUrl} />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="640" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Petito Costruzioni — Costruiamo certezze." />
 
     <meta name="twitter:card" content="summary_large_image" />
